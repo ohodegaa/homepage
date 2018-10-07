@@ -10,12 +10,7 @@ pipeline {
             steps {
                 echo 'Building...'
                 sh 'cd webapp/ && npm install'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing...'
-                sh 'cd webapp/ && npm test'
+                sh 'npm run build'
             }
         }
     }
