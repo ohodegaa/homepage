@@ -9,8 +9,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                sh 'cd webapp/ && npm install'
-                sh 'npm run build'
+                sh 'cd /webapp && npm install'
+                sh 'cd /webapp && npm run build'
             }
         }
     }
