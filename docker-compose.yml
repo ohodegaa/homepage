@@ -1,0 +1,32 @@
+version: "3"
+
+
+services:
+
+  webapp:
+    build: webapp
+    networks:
+      - homepage_network
+    env_file:
+      - webapp/.env
+
+  api:
+    build: api
+    networks:
+      - homepage_network
+    env_file:
+      - api/.env
+
+  proxy:
+    build: proxy
+    ports:
+      - 80:8080
+    networks:
+      - homepage_network
+    depends_on:
+      - webapp
+      - api
+
+networks:
+  homepage_network:
+    driver: bridge
