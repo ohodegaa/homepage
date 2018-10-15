@@ -10,7 +10,7 @@ COPY package-lock.json /api
 RUN npm install
 COPY . /api
 
-EXPOSE 4000
+EXPOSE 5001
 
 CMD ["npm", "start"]
 

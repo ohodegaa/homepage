@@ -7,8 +7,6 @@ services:
     build: webapp
     networks:
       - homepage_network
-    env_file:
-      - webapp/.env
 
   api:
     build: api

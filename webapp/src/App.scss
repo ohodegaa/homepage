@@ -1,0 +1,32 @@
+@import "styles/_all";
+
+html,
+#root,
+body {
+    height: 100%;
+}
+
+.App {
+    height: 100%;
+}
+
+.App-wrapper {
+    height: 100%;
+    padding-top: 56px;
+    &.appbar-disabled {
+        padding-top: 0;
+    }
+}
+
+@media (orientation: landscape) {
+    .App-wrapper {
+        padding-top: 48px;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+

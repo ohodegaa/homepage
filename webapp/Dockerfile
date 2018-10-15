@@ -1,4 +1,4 @@
-FROM node
+FROM node:10.11.0
 
 RUN mkdir -p /webapp
 
@@ -10,7 +10,7 @@ COPY package-lock.json /webapp
 RUN npm install
 COPY . /webapp
 
-EXPOSE 5000
+EXPOSE 5002
 
 CMD ["npm", "start"]
 
