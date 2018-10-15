@@ -25,6 +25,25 @@ services:
       - webapp
       - api
 
+  jenkins:
+    build: CI
+    container_name: jenkins
+    privileged: true
+    restart: always
+    ports:
+    - 8080:8080
+    volumes:
+    - ./jenkins_home:/var/jenkins_home
+    - /var/run/docker.sock:/var/run/docker.sock
+    - /usr/local/bin/docker:/usr/bin/docker
+
+  registry:
+    image: registry
+    container_name: registry
+    restart: always
+    ports:
+    - 5000:5000
+
 networks:
   homepage_network:
     driver: bridge
