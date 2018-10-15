@@ -46,6 +46,12 @@ services:
     restart: always
     ports:
       - 5000:5000
+  mongodb:
+    image: mongo:latest
+    container_name: "mongodb"
+    ports:
+    - 27017:27017
+    command: mongod
 
 
 networks:
