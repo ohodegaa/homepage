@@ -14,6 +14,8 @@ services:
       - homepage_network
     env_file:
       - api/.env
+    depends_on:
+      - mongo
 
   proxy:
     build: proxy
@@ -49,6 +51,8 @@ services:
   mongo:
     image: mongo:latest
     command: mongod
+    networks:
+      - homepage_network
 
 
 networks:
