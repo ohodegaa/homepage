@@ -10,7 +10,7 @@ COPY package-lock.json /webapp
 RUN npm install
 COPY . /webapp
 
-EXPOSE 5002
+EXPOSE 9002
 
 CMD ["npm", "start"]
 
