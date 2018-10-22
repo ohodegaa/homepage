@@ -1,6 +1,7 @@
 import React from "react"
 import MuiSnackBar from "@material-ui/core/Snackbar"
 import { connect } from "react-redux"
+import { withStyles } from "@material-ui/core"
 
 class SnackBar extends React.Component {
     constructor(props) {
@@ -20,6 +21,13 @@ class SnackBar extends React.Component {
                 <div>
                     {this.props.errors.map((err, i) => (
                         <MuiSnackBar
+                            ContentProps={{
+                                classes: {
+                                    root: {
+                                        background: "#f00",
+                                    },
+                                },
+                            }}
                             key={i}
                             anchorOrigin={{
                                 vertical: "bottom",
@@ -40,17 +48,23 @@ class SnackBar extends React.Component {
     }
 }
 
+const styles = theme => ({
+    info: {
+        backgroundColor: theme.palette.error,
+    },
+})
+
 const mapStateToProps = state => {
-    let errors = []
-    if (state.auth.error) {
-        errors.push(state.auth.error)
-    }
-    return {
-        errors,
-    }
+    let messages = []
+    Object.keys(state).map(key => {
+        if (state[key].messages) {
+            messages = [...messages, state[key].messages]
+        }
+    })
+    return { messages }
 }
 
 export default connect(
     mapStateToProps,
     {},
-)(SnackBar)
+)(withStyles(styles)(SnackBar))

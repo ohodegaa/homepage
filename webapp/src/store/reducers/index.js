@@ -1,12 +1,12 @@
 import { combineReducers } from "redux"
-import authReducer from "./auth"
 import appbarReducer from "./appbar"
-import propTypesReducer from "./propTypes"
-import propTypeReducer from "./propType"
+import apiReducer from "./apiReducer"
 
 export default combineReducers({
-    auth: authReducer,
     appbar: appbarReducer,
-    propTypes: propTypesReducer,
-    propType: propTypeReducer,
+    profile: apiReducer("user"),
+    //propertyTypes: apiReducer("propTypes"),
+    //propertyType: apiReducer("propType"),
+    properties: apiReducer("properties"),
+    property: apiReducer("property"),
 })

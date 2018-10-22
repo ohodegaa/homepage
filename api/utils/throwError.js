@@ -1,6 +1,7 @@
-module.exports = (status, description) => {
+module.exports = (status, description, param = null) => {
     throw {
-        status: status,
-        description: description,
+        status,
+        description,
+        param,
     }
 }

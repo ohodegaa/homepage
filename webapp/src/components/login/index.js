@@ -22,14 +22,13 @@ class Login extends React.Component {
         this.state = {
             username: "",
             password: "",
-            redirect: false,
         }
     }
 
     componentDidMount() {
         this.props.setTitle("Logg inn")
         this.props.setLeft("back", {
-            redirect: () => this.setState({ redirect: true }),
+            redirect: "/",
         })
     }
 
@@ -40,11 +39,9 @@ class Login extends React.Component {
     }
 
     render() {
-        if (this.state.redirect) {
-            return <Redirect to={"/"} />
-        }
-        if (this.props.user) {
-            return <Redirect to={"/"} />
+        const { from } = this.props.location.state || { from: { pathname: "/" } }
+        if (from.pathname !== "/" && this.props.isLoggedIn) {
+            return <Redirect to={from} />
         }
         return (
             <div className="login-container">
@@ -100,20 +97,7 @@ class Login extends React.Component {
     }
 }
 
-Login.propTypes = {
-    login: PropTypes.func.isRequired,
-    setLeft: PropTypes.func.isRequired,
-    setTitle: PropTypes.func.isRequired,
-    user: PropTypes.object.isRequired,
-}
-
-const mapStateToProps = state => {
-    return {
-        user: state.auth.user,
-    }
-}
-
 export default connect(
-    mapStateToProps,
+    null,
     { setTitle, setLeft, login },
 )(Login)

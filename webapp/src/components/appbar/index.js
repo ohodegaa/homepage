@@ -8,17 +8,18 @@ import MuiAppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar/Toolbar"
 import Typography from "@material-ui/core/Typography"
 import Grid from "@material-ui/core/Grid/Grid"
+import { withStyles } from "@material-ui/core"
 
-class AppBar extends React.Component {
+export class Appbar extends React.Component {
     render() {
-        if (_.isEmpty(this.props.appBar)) {
+        if (_.isEmpty(this.props.appbar)) {
             return null
         }
 
-        let { title, left, right } = this.props.appBar
-
+        let { title, left, right } = this.props.appbar
+        const AppbarComponent = withStyles(() => this.props.appbar.appbarClasses)(MuiAppBar)
         return (
-            <MuiAppBar position={"fixed"}>
+            <AppbarComponent position={this.props.appbar.position || "fixed"}>
                 <Toolbar>
                     <Grid container spacing={24}>
                         <Grid container item xs={4} align={"center"}>
@@ -32,16 +33,15 @@ class AppBar extends React.Component {
                         </Grid>
                     </Grid>
                 </Toolbar>
-            </MuiAppBar>
+            </AppbarComponent>
         )
     }
 }
 
 const mapStateToProps = state => {
     return {
-        appBar: state.appBar,
-        user: state.auth.user,
+        appbar: state.appbar,
     }
 }
 
-export default connect(mapStateToProps)(AppBar)
+export default connect(mapStateToProps)(Appbar)

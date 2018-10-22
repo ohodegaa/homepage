@@ -1,23 +1,26 @@
 import React from "react"
-import Typography from "@material-ui/core/Typography"
+import Button from "@material-ui/core/Button"
 import { connect } from "react-redux"
-
+import Card from "@material-ui/core/Card"
+import CardContent from "@material-ui/core/CardContent"
+import { setTitle } from "../../store/actions/appBar"
 
 class Home extends React.Component {
-    componentDidMount() {}
-
     render() {
         return (
-            <div>
-                <Typography variant="headline">Hello world!</Typography>
+            <div className="home-container">
+                <Card className={"login-card"}>
+                    <CardContent>
+                        <Button variant={"outlined"}>Logg inn</Button>
+                        <Button variant={"outlined"}>Registrer</Button>
+                    </CardContent>
+                </Card>
             </div>
         )
     }
 }
 
-const mapStateToProps = state => {}
-
 export default connect(
-    mapStateToProps,
-    {},
+    null,
+    { setTitle },
 )(Home)

@@ -1,4 +1,4 @@
-import authApi from "../../utils/api/auth"
+import authApi from "../../utils/api/authApi"
 import { authTypes } from "../types"
 
 export const login = data => ({

@@ -13,6 +13,7 @@ body {
 .App-wrapper {
     height: 100%;
     padding-top: 56px;
+    background-image: linear-gradient(to top, #3f51b5af, #ba46abaf, #ff4b80af, #ff7f48af, #ffc107af);
     &.appbar-disabled {
         padding-top: 0;
     }
@@ -20,7 +21,7 @@ body {
 
 @media (orientation: landscape) {
     .App-wrapper {
-        padding-top: 48px;
+        padding-top: 64px;
     }
 }
 

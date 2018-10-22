@@ -10,7 +10,7 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         select: false,
-        default: "",
+        default: null,
     },
     name: String,
     mail: String,
@@ -30,4 +30,7 @@ userSchema.methods.getSafe = function() {
     return obj
 }
 
-module.exports = mongoose.model("User", userSchema)
+module.exports = {
+    model: mongoose.model("User", userSchema),
+    schema: userSchema,
+}

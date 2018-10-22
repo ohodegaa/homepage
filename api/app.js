@@ -3,9 +3,12 @@ const morgan = require("morgan")
 const bodyParser = require("body-parser")
 const expressValidator = require("express-validator")
 const cors = require("cors")
+const _ = require("lodash")
 require("./db")
 
-const apiRouter = require("./routes/api")
+const mongoose = require("mongoose")
+
+const apiRouter = require("./router/apiRouter")
 
 const app = express()
 
@@ -25,6 +28,21 @@ app.use((req, res, next) => {
     next()
 })
 
+app.use((req, res, next) => {
+    const { query } = req
+    req.regexQuery = !_.isEmpty(query)
+        ? {
+              $or: Object.keys(query).map(key => ({
+                  [key]: {
+                      $regex: [query[key]],
+                      $options: "i",
+                  },
+              })),
+          }
+        : {}
+    next()
+})
+
 app.use("/api", apiRouter)
 
 // not found error (404)
@@ -34,7 +52,7 @@ app.use((req, res, next) => {
     next(error)
 })
 
-// handles all errors in our api
+// handles all errors in our apiRouter
 app.use((err, req, res) => {
     res.status(err.status || 500)
     console.log(err)

@@ -2,10 +2,9 @@
 .home-container {
   height: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
-  background-color: #3f51b5; }
+  justify-content: center; }
 
 .home-header {
   display: flex;
@@ -15,6 +14,9 @@
 .button-root {
   width: 180px;
   height: 50px; }
+
+.appbar-minimized {
+  top: 200px; }
 
 /* Auth */
 .login-container {
@@ -35,13 +37,14 @@ body {
 
 .App-wrapper {
   height: 100%;
-  padding-top: 56px; }
+  padding-top: 56px;
+  background-image: linear-gradient(to top, #3f51b5af, #ba46abaf, #ff4b80af, #ff7f48af, #ffc107af); }
   .App-wrapper.appbar-disabled {
     padding-top: 0; }
 
 @media (orientation: landscape) {
   .App-wrapper {
-    padding-top: 48px; } }
+    padding-top: 64px; } }
 
 body {
   margin: 0;

@@ -1,14 +1,14 @@
 import { appbarTypes } from "../types"
 
 export const setTitle = title => ({
-    type: appbarTypes.SET_APP_BAR_TITLE,
+    type: appbarTypes.SET_APPBAR_TITLE,
     payload: {
         title,
     },
 })
 
 export const setLeft = (type, options = {}) => ({
-    type: appbarTypes.SET_APP_BAR_LEFT,
+    type: appbarTypes.SET_APPBAR_LEFT,
     payload: {
         type,
         options,
@@ -16,10 +16,17 @@ export const setLeft = (type, options = {}) => ({
 })
 
 export const setRight = (type, options = {}) => ({
-    type: appbarTypes.SET_APP_BAR_RIGHT,
+    type: appbarTypes.SET_APPBAR_RIGHT,
     payload: {
         type,
         options,
+    },
+})
+
+export const setAppbarClasses = appbarClasses => ({
+    type: appbarTypes.SET_APPBAR_CLASSES,
+    payload: {
+        appbarClasses,
     },
 })
 

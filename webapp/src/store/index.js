@@ -5,16 +5,32 @@ import promise from "redux-promise-middleware"
 import thunk from "redux-thunk"
 
 const initialState = {
-    auth: null,
+    profile: {
+        data: null,
+        fetching: false,
+        messages: [],
+    },
     appbar: null,
-    propTypes: null,
-    propType: null,
-    props: null,
-    prop: null,
+    propertyTypes: {
+        data: null,
+        fetching: false,
+        messages: [],
+    },
+    propertyType: {
+        data: null,
+        fetching: false,
+        messages: [],
+    },
+    properties: {
+        data: null,
+        fetching: false,
+        messages: [],
+    },
+    property: {
+        data: null,
+        fetching: false,
+        messages: [],
+    },
 }
 
-export default createStore(
-    reducer,
-    initialState,
-    applyMiddleware(logger, thunk, promise()),
-)
+export default createStore(reducer, initialState, applyMiddleware(logger, thunk, promise()))

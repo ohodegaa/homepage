@@ -7,4 +7,7 @@ const groupSchema = mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model("Group", groupSchema)
+module.exports = {
+    model: mongoose.model("Group", groupSchema),
+    schema: groupSchema,
+}

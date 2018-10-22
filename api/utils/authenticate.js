@@ -4,8 +4,11 @@ const throwError = require("./throwError")
 const getToken = req => {
     return new Promise(resolve => {
         const bearerToken = req.headers["authorization"]
-        const token = bearerToken.split(" ")[1]
-        if (!token) {
+        let token
+        if (bearerToken) {
+            token = bearerToken.split(" ")[1]
+        }
+        if (!bearerToken || !token) {
             throwError(401, "No token provided. Please provide a valid jwt token.")
         }
         resolve(token)
@@ -25,10 +28,13 @@ const authenticate = (req, res, next) => {
         })
         .catch(err => {
             res.status(err.status || 500).json({
-                error: {
-                    message: "Error authenticating the user",
-                    description: err.description || err,
-                },
+                messages: [
+                    {
+                        type: "error",
+                        message: "Error authenticating the user",
+                        description: err.description || err,
+                    },
+                ],
             })
         })
 }

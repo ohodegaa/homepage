@@ -3,26 +3,29 @@ import { appbarTypes } from "../types"
 export default (state, action) => {
     switch (action.type) {
         /* LOG_IN */
-        case appbarTypes.SET_APP_BAR_TITLE:
+        case appbarTypes.SET_APPBAR_TITLE:
             return {
                 ...state,
-                title: action.payload.title,
+                ...action.payload,
             }
-        case appbarTypes.SET_APP_BAR_LEFT:
+        case appbarTypes.SET_APPBAR_LEFT:
             return {
                 ...state,
                 left: {
-                    type: action.payload.type,
-                    options: action.payload.options,
+                    ...action.payload,
                 },
             }
-        case appbarTypes.SET_APP_BAR_RIGHT:
+        case appbarTypes.SET_APPBAR_RIGHT:
             return {
                 ...state,
                 right: {
-                    type: action.payload.type,
-                    options: action.payload.options,
+                    ...action.payload,
                 },
+            }
+        case appbarTypes.SET_APPBAR_CLASSES:
+            return {
+                ...state,
+                ...action.payload,
             }
 
         case appbarTypes.DISABLE:
