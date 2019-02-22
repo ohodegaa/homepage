@@ -4,14 +4,21 @@ const getModel = require("../helpers/getModel")
 module.exports = (req, res) => {
     return new Promise(resolve => {
         const model = getModel(req.Collection)
-        model.findOneAndDelete({ _id: req.params.id })
+        resolve(model.findOneAndDelete({ _id: req.params.id }).exec())
     })
-
         .then(delRes => {
-            if (delRes.n <= 0) {
-                throwError(404, "No prop type was found with id " + req.params.id)
+            if (!delRes) {
+                throwError(404, "No record was found with id " + req.params.id)
             } else {
-                res.sendStatus(200)
+                res.status(200).json({
+                    messages: [
+                        {
+                            type: "success",
+                            message: "Record deleted successfully",
+                            description: "The record was successfully deleted from collection " + req.Collection.name,
+                        },
+                    ],
+                })
             }
         })
         .catch(err => {
@@ -19,8 +26,8 @@ module.exports = (req, res) => {
                 messages: [
                     {
                         type: "error",
-                        message: "Error deleting the property type",
-                        description: err.description || "Unknown error deleting new property type",
+                        message: "Error deleting the record",
+                        description: err.description || "Unknown error deleting the record",
                     },
                 ],
             })

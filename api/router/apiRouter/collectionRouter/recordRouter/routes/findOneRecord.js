@@ -1,11 +1,13 @@
-const PropType = require("../../../../../db/models/propertyType")
+const getModel = require("../helpers/getModel")
 
 module.exports = (req, res) => {
-    PropType.findOne({ _id: req.params.id })
-        .exec()
-        .then(propType => {
+    return new Promise(resolve => {
+        const model = getModel(req.Collection)
+        resolve(model.findOne({ _id: req.params.id }).exec())
+    })
+        .then(record => {
             res.status(200).json({
-                propType,
+                [req.Collection._collectionName]: record,
             })
         })
         .catch(() => {
@@ -13,8 +15,8 @@ module.exports = (req, res) => {
                 messages: [
                     {
                         type: "error",
-                        message: "Error fetching the property type",
-                        description: "The server was unable to fetch property type with id " + req.params.id,
+                        message: "Error fetching the record",
+                        description: "The server was unable to fetch the record",
                     },
                 ],
             })

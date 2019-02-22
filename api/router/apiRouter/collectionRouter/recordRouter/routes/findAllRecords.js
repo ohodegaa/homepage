@@ -1,12 +1,14 @@
-const PropType = require("../../../../../db/models/propertyType")
-const _ = require("lodash")
+const getModel = require("../helpers/getModel")
 
 module.exports = (req, res) => {
-    PropType.find(req.regexQuery)
-        .exec()
-        .then(propTypes => {
+    return new Promise(resolve => {
+        console.log("halla baola")
+        const model = getModel(req.Collection)
+        resolve(model.find(req.regexQuery).exec())
+    })
+        .then(records => {
             res.status(200).json({
-                propTypes,
+                [req.Collection._collectionName]: records,
             })
         })
         .catch(() => {
@@ -14,8 +16,8 @@ module.exports = (req, res) => {
                 messages: [
                     {
                         type: "error",
-                        message: "Error fetching property types",
-                        description: "Unknown error fetching all property types",
+                        message: "Error fetching records",
+                        description: "Unknown error fetching all records",
                     },
                 ],
             })

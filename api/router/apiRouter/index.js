@@ -6,7 +6,7 @@ const propertyRouter = require("./propertyRouter")
 const collectionRouter = require("./collectionRouter")
 //const propTypeRouter = require("./propertyTypeRouter")
 
-router.use("/auth", authRouter)
+router.use("/login", authRouter)
 router.use("/users", userRouter)
 router.use("/properties", propertyRouter)
 router.use("/collections", collectionRouter)

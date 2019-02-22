@@ -12,6 +12,10 @@ const collectionSchema = mongoose.Schema({
                 ref: "Property",
             },
         ],
+        isArray: {
+            type: Boolean,
+            default: false,
+        },
     },
     _collectionName: {
         type: String,

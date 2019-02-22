@@ -1,11 +1,27 @@
-const PropType = require("../../../../../db/models/propertyType")
+const getModel = require("../helpers/getModel")
+const throwError = require("../../../../../utils/throwError")
 
 module.exports = (req, res) => {
-    PropType.findOneAndUpdate({ _id: req.params.id }, { $set: { ...req.body } }, { new: true })
-        .exec()
-        .then(propType => {
+    return new Promise(resolve => {
+        const model = getModel(req.Collection)
+        resolve(model.findOneAndUpdate({ _id: req.params.id }, { $set: { ...req.body } }, { new: true }).exec())
+    })
+        .then(record => {
+            if (!record) {
+                throwError(
+                    404,
+                    "No record from collection " + req.Collection.name + " was found with id " + req.params.id,
+                )
+            }
             res.status(200).json({
-                propType,
+                [req.Collection._collectionName]: record,
+                messaged: [
+                    {
+                        type: "success",
+                        message: "The record was updated",
+                        description: "The records was successfully updated",
+                    },
+                ],
             })
         })
         .catch(() => {

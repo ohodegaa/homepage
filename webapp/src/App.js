@@ -1,9 +1,7 @@
 import React, { Component } from "react"
 import { Switch, Route } from "react-router-dom"
 import axios from "axios"
-import PropTypes from "prop-types"
-import Login from "./components/login"
-import Register from "./components/register"
+import Login from "./pages/login"
 import AppBar from "./components/appbar"
 import Home from "./components/home"
 import { connect } from "react-redux"
@@ -59,8 +57,7 @@ class App extends Component {
                 <div className="App">
                     <Switch>
                         <Route exact path="/" component={Home} />
-                        <Route exact path="/login" component={Login} />
-                        <Route exact path="/register" component={Register} />
+                        <Route path="/login" component={Login} />
                     </Switch>
                 </div>
             </div>

@@ -7,9 +7,16 @@ module.exports = (req, res) => {
         const record = new Model({ ...req.body })
         resolve(record.save())
     })
-        .then(savedRecord => {
+        .then(record => {
             res.status(200).json({
-                data: { ...savedRecord },
+                [req.Collection._collectionName]: record,
+                messages: [
+                    {
+                        type: "success",
+                        message: "Record created",
+                        description: "Record was successfully added to collection " + req.Collection.name,
+                    },
+                ],
             })
         })
         .catch(err => {

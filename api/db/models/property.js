@@ -12,13 +12,14 @@ const propertySchema = mongoose.Schema({
         type: String,
         default: "string",
     },
+    reference: {
+        type: String,
+        required: () => this.propertyType === "mongoId",
+    },
+    // Automatically created (camel-case from name)
     key: {
         type: String,
-        required: true
-    },
-    isArray: {
-        type: Boolean,
-        default: false,
+        required: true,
     },
     __v: {
         type: Number,

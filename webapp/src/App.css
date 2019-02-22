@@ -1,3 +1,14 @@
+/* Common components */
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  margin-bottom: 48px; }
+
+.page {
+  width: 100%;
+  height: 100%; }
+
 /* Landing */
 .home-container {
   height: 100%;
@@ -18,13 +29,27 @@
 .appbar-minimized {
   top: 200px; }
 
-/* Auth */
-.login-container {
+/* Login */
+.login-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%; }
+  background-size: cover;
+  background-blend-mode: overlay;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.5); }
+  .login-page.winter {
+    background-image: url("/img/login-background/winter-background.jpg"); }
+  .login-page.spring {
+    background-image: url("/img/login-background/spring-background.jpg"); }
+  .login-page.autumn {
+    background-image: url("/img/login-background/autumn-background.jpg"); }
+  .login-page.summer {
+    background-image: url("/img/login-background/summer-background.jpg"); }
+
+.login-paper {
+  background-color: rgba(0, 0, 0, 0); }
 
 /* AppBar */
 html,
@@ -37,8 +62,7 @@ body {
 
 .App-wrapper {
   height: 100%;
-  padding-top: 56px;
-  background-image: linear-gradient(to top, #3f51b5af, #ba46abaf, #ff4b80af, #ff7f48af, #ffc107af); }
+  padding-top: 56px; }
   .App-wrapper.appbar-disabled {
     padding-top: 0; }
 

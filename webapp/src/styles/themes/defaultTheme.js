@@ -1,45 +1,18 @@
 import { createMuiTheme } from "@material-ui/core/styles"
-import { indigo, amber, red } from "@material-ui/core/colors"
+import { indigo, amber, red, lightBlue, teal } from "@material-ui/core/colors"
 
-export default createMuiTheme({
+const theme = createMuiTheme({
     palette: {
-        type: "light",
-        primary: indigo,
-        secondary: amber,
+        primary: {
+            main: "#1EB980",
+        },
+        secondary: {
+            main: "#ec5381",
+        },
         error: red,
     },
-    typography: {
-        headline: {
-            color: "#fefefe",
-        },
-    },
-    overrides: {
-        MuiIconButton: {
-            root: {
-                color: "#fefefe",
-            },
-        },
-        MuiFormGroup: {
-            root: {
-                marginTop: "12px",
-                marginBottom: "18px",
-            },
-        },
-        MuiToolbar: {
-            gutters: {
-                paddingLeft: 0,
-                paddingRight: 0,
-            },
-        },
-        MuiSnackbarContent: {
-            root: {
-                backgroundColor: red["700"],
-            },
-        },
-        MuiButton: {
-            root: {
-                borderRadius: 1000,
-            },
-        },
-    },
 })
+
+console.log(theme)
+
+export default theme

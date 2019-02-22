@@ -9,12 +9,7 @@ class Home extends React.Component {
     render() {
         return (
             <div className="home-container">
-                <Card className={"login-card"}>
-                    <CardContent>
-                        <Button variant={"outlined"}>Logg inn</Button>
-                        <Button variant={"outlined"}>Registrer</Button>
-                    </CardContent>
-                </Card>
+
             </div>
         )
     }

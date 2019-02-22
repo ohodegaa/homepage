@@ -1,0 +1,32 @@
+$background-path: "/img/login-background/";
+
+.login-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-blend-mode: overlay;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    &.winter {
+        background-image: url($background-path + "winter-background.jpg");
+    }
+
+    &.spring {
+        background-image: url($background-path + "spring-background.jpg");
+    }
+
+    &.autumn {
+        background-image: url($background-path + "autumn-background.jpg");
+    }
+
+    &.summer {
+        background-image: url($background-path + "summer-background.jpg");
+    }
+}
+
+.login-paper {
+    background-color: rgba(0, 0, 0, 0);
+}

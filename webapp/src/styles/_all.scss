@@ -1,11 +1,14 @@
 @import "styleguide";
 
+/* Common components */
+@import "components/form";
+@import "components/page";
+
 /* Landing */
 @import "components/home/home";
 
-
-/* Auth */
-@import "components/auth/login";
+/* Login */
+@import "components/login/login";
 
 /* AppBar */
 @import "components/appBar/appBar";

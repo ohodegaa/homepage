@@ -2,6 +2,7 @@ const Collection = require("../../../../db/models/collection").model
 
 module.exports = (req, res) => {
     Collection.findOne({ _id: req.params.id })
+        .populate("properties")
         .exec()
         .then(collection => {
             res.status(200).json({

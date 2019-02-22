@@ -23,14 +23,15 @@ module.exports = (req, res) => {
             return collection.save()
         })
         .then(collection => {
-            const referenceProperty = new Property({
-                name: "Reference to collection " + collection.name,
-                description: "Refer to a record in the " + collection.name + "-collection",
-                propertyType: "mongoId",
-
-            })
             res.status(201).json({
                 collection,
+                messages: [
+                    {
+                        type: "success",
+                        message: "Collection created",
+                        description: "Collection " + collection.name + " created successfully",
+                    },
+                ],
             })
         })
         .catch(err => {
@@ -45,23 +46,3 @@ module.exports = (req, res) => {
             })
         })
 }
-
-name: {
-    type: String,
-        required: true,
-},
-description: {
-    type: String,
-},
-propertyType: {
-    type: String,
-default: "string",
-},
-key: {
-    type: String,
-        required: true
-},
-isArray: {
-    type: Boolean,
-default: false,
-},
